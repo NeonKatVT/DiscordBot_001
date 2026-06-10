@@ -25,9 +25,9 @@ export const botConfig = {
     activities: [
       {
         // Text users will see (example: "Playing /help | Titan Bot").
-        name: "Made with ❤️",
+        name: "for /help | DuskBot v1.0",
         // Activity type number (0 = Playing).
-        type: 0, 
+        type: 2, 
       },
     ],
   },
@@ -44,7 +44,7 @@ export const botConfig = {
     defaultCooldown: 3, 
 
     // If true, old commands are removed before re-registering.
-    deleteCommands: false,
+    deleteCommands: true,
 
     // Optional server ID used for testing slash commands quickly.
     testGuildId: process.env.TEST_GUILD_ID,
@@ -136,7 +136,7 @@ export const botConfig = {
     },
     footer: {
       // Default footer text used in bot embeds.
-      text: "Titan Bot",
+      text: "DuskBot Discord Edition v1.0.0",
       // Footer icon URL (null = no icon).
       icon: null,
     },
@@ -156,29 +156,29 @@ export const botConfig = {
   economy: {
     currency: {
       // Currency display name.
-      name: "coins",
+      name: "DuskCoin",
       // Plural display name.
-      namePlural: "coins",
+      namePlural: "DuskCoins",
       // Currency symbol shown in balances.
-      symbol: "$",
+      symbol: "D$",
     },
 
     // Starting balance for new users.
-    startingBalance: 0,
+    startingBalance: 50000,
 
     // Maximum bank amount before upgrades (if upgrades are used).
-    baseBankCapacity: 100000,
+    baseBankCapacity: 10000000,
 
     // Daily reward amount.
     dailyAmount: 100,
 
     // Work command random payout range.
-    workMin: 10,
-    workMax: 100,
+    workMin: 1000,
+    workMax: 500000,
 
     // Beg command random payout range.
-    begMin: 5,
-    begMax: 50,
+    begMin: 500,
+    begMax: 5000,
 
     // Chance to succeed when robbing (0.4 = 40%).
     robSuccessRate: 0.4,
