@@ -1,3 +1,5 @@
+DuskBot uses this codebase to host it's code. Property of Dusk Legion & Starfall Studios
+
 # TitanBot - Ultimate Discord Bot
 
 **TitanBot** is a powerful, feature-rich Discord bot designed to enhance your server experience with comprehensive moderation tools, engaging economy systems, utility features, and much more. Built with modern Discord.js v14 and PostgreSQL for optimal performance and data persistence.
