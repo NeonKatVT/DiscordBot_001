@@ -3,6 +3,7 @@ import { getGuildConfig } from '../services/guildConfig.js';
 import { logger } from './logger.js';
 import { getFromDb, setInDb } from './database.js';
 import { getColor } from '../config/bot.js';
+import { formatWelcomeMessage } from '../utils/welcome.js';
 
 
 
