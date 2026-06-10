@@ -96,6 +96,14 @@ export async function logEvent({ client, guild, guildId, event }) {
       });
     }
 
+    if (event.note) {
+      embed.addFields({
+        name: "Moderation Notes",
+        value: event.reason.length > 1024 ? event.reason.substring(0, 1021) + '...' : event.reason,
+        inline: true
+      });
+    }
+
     if (event.metadata) {
       Object.entries(event.metadata).forEach(([key, value]) => {
         if (value !== undefined && value !== null) {
