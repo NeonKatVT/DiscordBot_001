@@ -80,6 +80,14 @@ export async function logEvent({ client, guild, guildId, event }) {
         iconURL: guild.iconURL()
       });
 
+    if (event.warning) {
+      embed.addFields({
+        name: "[!] Warning",
+        value: event.reason.length > 1024 ? event.reason.substring(0, 1021) + '...' : event.reason,
+        inline: true
+      });
+    }
+
     if (event.reason) {
       embed.addFields({
         name: "Reason",
@@ -92,14 +100,6 @@ export async function logEvent({ client, guild, guildId, event }) {
       embed.addFields({
         name: "Duration",
         value: event.duration,
-        inline: true
-      });
-    }
-
-    if (event.note) {
-      embed.addFields({
-        name: "Moderation Notes",
-        value: event.reason.length > 1024 ? event.reason.substring(0, 1021) + '...' : event.reason,
         inline: true
       });
     }
