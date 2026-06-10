@@ -66,20 +66,11 @@ export default {
 
       
       if (interaction.member.roles.highest.position <= member.roles.highest.position) {
-        throw new TitanBotError(
-          "Cannot kick user",
-          ErrorTypes.PERMISSION,
-          "You cannot kick a user with an equal or higher role than you."
-        );
-      }
-
-      
-      if (!member.kickable) {
         const caseId = await logModerationAction({
           client,
           guild: interaction.guild,
           event: {
-            action: "Member Kick failed! Possible power abuse detected!",
+            action: "Member Kick (Failed; Possible power abuse)",
             target: `${targetUser.tag} (${targetUser.id})`,
             executor: `${interaction.user.tag} (${interaction.user.id})`,
             reason,
@@ -89,7 +80,16 @@ export default {
             }
           }
         });
-        
+          
+        throw new TitanBotError(
+          "Cannot kick user",
+          ErrorTypes.PERMISSION,
+          "You cannot kick a user with an equal or higher role than you."
+        );
+      }
+
+      
+      if (!member.kickable) {
         throw new TitanBotError(
           "Bot cannot kick",
           ErrorTypes.PERMISSION,
