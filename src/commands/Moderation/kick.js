@@ -75,6 +75,21 @@ export default {
 
       
       if (!member.kickable) {
+        const caseId = await logModerationAction({
+          client,
+          guild: interaction.guild,
+          event: {
+            action: "Member Kick failed! Possible power abuse detected!",
+            target: `${targetUser.tag} (${targetUser.id})`,
+            executor: `${interaction.user.tag} (${interaction.user.id})`,
+            reason,
+            metadata: {
+              userId: targetUser.id,
+              moderatorId: interaction.user.id
+            }
+          }
+        });
+        
         throw new TitanBotError(
           "Bot cannot kick",
           ErrorTypes.PERMISSION,
