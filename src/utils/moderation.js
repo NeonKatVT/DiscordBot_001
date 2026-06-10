@@ -50,6 +50,7 @@ export async function logEvent({ client, guild, guildId, event }) {
 
     
     const actionStyles = {
+      'Power Abuse Detected': { color: getColor('warning'), icon: '⚠️' },
       'Member Banned': { color: getColor('error'), icon: '🔨' },
       'Member Kicked': { color: getColor('warning'), icon: '👢' },
       'Member Timed Out': { color: getColor('warning'), icon: '⏳' },
@@ -83,11 +84,19 @@ export async function logEvent({ client, guild, guildId, event }) {
     if (event.warning) {
       embed.addFields({
         name: "[!] Warning",
-        value: event.reason.length > 1024 ? event.reason.substring(0, 1021) + '...' : event.reason,
+        value: event.warning.length > 1024 ? event.warning.substring(0, 1021) + '...' : event.warning,
         inline: true
       });
     }
 
+    if (event.attemptedAction) {
+      embed.addFields({
+        name: "Attempted Action",
+        value: event.attemptedAction.length > 1024 ? event.attemptedAction.substring(0, 1021) + '...' : event.attemptedAction,
+        inline: true
+      });
+    }
+    
     if (event.reason) {
       embed.addFields({
         name: "Reason",
