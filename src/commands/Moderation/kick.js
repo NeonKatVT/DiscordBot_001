@@ -70,8 +70,8 @@ export default {
           client,
           guild: interaction.guild,
           event: {
-            warning: "Following action was failed due to possible power abuse. Consider taking appropiate action now.",
-            action: "Member Kick",
+            attemptedAction: "Member Kick",
+            action: "Power Abuse Detected",
             target: `${targetUser.tag} (${targetUser.id})`,
             executor: `${interaction.user.tag} (${interaction.user.id})`,
             reason,
@@ -83,9 +83,9 @@ export default {
         });
           
         throw new TitanBotError(
-          "Cannot kick user",
+          "Cannot do action",
           ErrorTypes.PERMISSION,
-          "You cannot kick a user with an equal or higher role than you."
+          "You cannot kick a user with an equal or higher role than you. I have notified the higher ups."
         );
       }
 
