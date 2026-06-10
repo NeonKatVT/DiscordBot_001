@@ -70,7 +70,8 @@ export default {
           client,
           guild: interaction.guild,
           event: {
-            action: "Member Kick (Failed; Possible power abuse)",
+            warning: "Following action was failed due to possible power abuse. Consider taking appropiate action now.",
+            action: "Member Kick",
             target: `${targetUser.tag} (${targetUser.id})`,
             executor: `${interaction.user.tag} (${interaction.user.id})`,
             reason,
