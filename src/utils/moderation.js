@@ -3,7 +3,7 @@ import { getGuildConfig } from '../services/guildConfig.js';
 import { logger } from './logger.js';
 import { getFromDb, setInDb } from './database.js';
 import { getColor } from '../config/bot.js';
-import { formatWelcomeMessage } from '../utils/welcome.js';
+import { formatMessage } from '../utils/embedTextTemplate.js';
 
 
 
@@ -85,7 +85,7 @@ export async function logEvent({ client, guild, guildId, event }) {
     if (event.warning) {
       embed.addFields({
         name: "[!] Warning",
-        value: event.warning.length > 1024 ? event.warning.substring(0, 1021) + '...' : event.warning,
+        value: formatMessage(event.warning.length > 1024 ? event.warning.substring(0, 1021) + '...' : event.warning),
         inline: true
       });
     }
@@ -93,7 +93,7 @@ export async function logEvent({ client, guild, guildId, event }) {
     if (event.attemptedAction) {
       embed.addFields({
         name: "Attempted Action",
-        value: event.attemptedAction.length > 1024 ? event.attemptedAction.substring(0, 1021) + '...' : event.attemptedAction,
+        value: formatMessage(event.attemptedAction.length > 1024 ? event.attemptedAction.substring(0, 1021) + '...' : event.attemptedAction),
         inline: true
       });
     }
@@ -101,7 +101,7 @@ export async function logEvent({ client, guild, guildId, event }) {
     if (event.reason) {
       embed.addFields({
         name: "Reason",
-        value: event.reason.length > 1024 ? event.reason.substring(0, 1021) + '...' : event.reason,
+        value: formatMessage(event.reason.length > 1024 ? event.reason.substring(0, 1021) + '...' : event.reason),
         inline: false
       });
     }
